@@ -2,10 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Test') {
+        stage('Checkout') {
             steps {
-                echo 'Hello from Jenkins Pipeline!'
-                sh 'ls -la'
+                checkout scm
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                sh 'docker build -t jenkins-lab .'
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                sh 'docker run --rm jenkins-lab'
             }
         }
     }
