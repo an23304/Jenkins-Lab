@@ -10,13 +10,13 @@ pipeline {
 
         stage('Build Image') {
             steps {
-                sh 'docker build -t jenkins-lab .'
+                sh 'podman build -t jenkins-lab .'
             }
         }
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d --name jenkins-lab jenkins-lab'
+                sh 'podman run -d --name jenkins-lab jenkins-lab'
             }
         }
     }
