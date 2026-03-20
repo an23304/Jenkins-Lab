@@ -16,7 +16,7 @@ pipeline {
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d --name jenkins-lab'
+                sh 'docker run -d --name jenkins-lab jenkins-lab'
             }
         }
     }
